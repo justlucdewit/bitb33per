@@ -21,6 +21,7 @@
 
 ### Standard songs
 ###### Bitb33per comes with a number of standard songs including:
+- happy birthday
 - mario theme song
 
 ##
@@ -79,3 +80,28 @@
     0;1000
     391;1000
     0;1000
+
+#
+
+    Print statements
+
+    Print statements are used for outputting text
+    to the screen. This can be used to display text
+    about the writer, or simply for displaying
+    lyrics. To make a print statement, use the
+    symbol ">" and then type the string to be
+    displayed to the screen
+
+    Example code:
+
+    >song written by human
+    >song will begin in 5 seconds
+    0;5000
+
+    >happy birthday to you
+    #bar 1
+    293;500
+    293;500
+    330;1000
+    293;1000
+    440;1000
