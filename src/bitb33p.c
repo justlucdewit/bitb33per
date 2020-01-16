@@ -7,20 +7,12 @@
 char *trimwhitespace(char *str)
 {
   char *end;
-
-  // Trim leading space
   while(isspace((unsigned char)*str)) str++;
-
-  if(*str == 0)  // All spaces?
+  if(*str == 0)
     return str;
-
-  // Trim trailing space
   end = str + strlen(str) - 1;
   while(end > str && isspace((unsigned char)*end)) end--;
-
-  // Write new null terminator character
   end[1] = '\0';
-
   return str;
 }
 
@@ -37,13 +29,26 @@ void readfile(const char* filename){
 	
 	//extract data from the file
 	while (fgets(str , MAXSONGLENGTH, fp) != NULL){
-		if (strcmp(trimwhitespace(str), "") != 0 && trimwhitespace(str)[0] != '#'){
+		//printf("begin read");
+		char* line = trimwhitespace(str);
+		//handle print statements
+		if (line[0] == '>'){
+			//delete the print opperator
+			memmove(&line[0], &line[0 + 1], strlen(line) - 0);
+
+			printf("%s\n", str);
+			continue;
+		}
+
+		//handle note statements
+		if (strcmp(line, "") != 0 && line[0] != '#'){
 			int frequency;
 			int duration;
 			
 			sscanf(str, "%d;%d", &frequency, &duration);
 			//printf("playing note with %d Hz for %d ms\n", frequency, (int) round(duration*PLAYSPEED));
 			Beep(frequency, duration*PLAYSPEED);
+			continue;
 		}
 	}
 	
@@ -52,6 +57,5 @@ void readfile(const char* filename){
 }
 
 int main(int argc, char* argv[]){
-	printf("opening file %s\n", argv[1]);
 	readfile(argv[1]);
 }
