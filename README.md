@@ -2,39 +2,63 @@
 
 ##
 
-###### Bitb33per is a 8bit music engine for Windows writen in pure c. it has its own language wich someone can easily write and read custom songs in!
+###### Bitb33per is a 8bit music engine for Windows writen in pure C. It has its own language wich someone can easily write and read custom songs in!
 
 ##
 
-### how to install Bitb33per
-###### - the first thing that you need to do is, to download the Bitb33per, the only thing you need is the `bitb33p.exe` file found in this repo. either download the repo as a zip file or git clone it with `git clone https://github.com/justlucdewit/bitb33per` 
+### How to install Bitb33per
+###### - The first thing that you need to do is, to download the Bitb33per. The only thing you need is the `bitb33p.exe` file found in this repo. Either download the repo as a zip file or Git clone it with the command `git clone https://github.com/justlucdewit/bitb33per` .
 
-###### - when you have `bitb33p` downloaded, you have to put the folder containing the executable  in your PATH, if u do not know how to do this. please read [this](https://www.itprotoday.com/cloud-computing/how-can-i-add-new-folder-my-system-path) article
+###### - When you have `bitb33p.exe` downloaded, you have to put the folder containing the executable in your PATH. If u do not know how to do this. please read [this](https://www.itprotoday.com/cloud-computing/how-can-i-add-new-folder-my-system-path) article.
 
 ## 
 
-### how to use Bitb33per
-###### to run a `.b33p` file (wich contains the song) you need to go to cmd and execute the following command: `bitb33p filename.b33p` where filename is the name of your file
+### How to use Bitb33per
+###### To run a `.b33p` file (wich contains the song) you need to go to cmd and execute the following command: `bitb33p filename.b33p` where filename is the name of your file.
 
 
 ##
 
-### standard songs
+### Standard songs
 ###### Bitb33per comes with a number of standard songs including:
 - mario theme song
 
 ##
 
-### how to write your own songs
+### How to write your own songs
 ###### Bitb33per comes with a number of syntax components:
 
     Comments
 
-    comments are texts that are ignored by the interpreter. 
-    they are used by the programmer to identify what part of the
+    Comments are texts that are ignored by the interpreter. 
+    They are used by the programmer to identify what part of the
     code they are looking at, or hinting future programmers what
-    the code means
+    the code means.
 
-    in Bitb33per you define a comment with the character #,
+    In Bitb33per you define a comment with the character #,
     everything after that gets turned into a comment and will be
-    ignored
+    ignored.
+
+    Example code:
+
+    #i am a comment
+    #that means that i am ignore
+    #simple :)
+
+#
+
+    Notes
+
+    A note, is a set of frequency and duration, sepperated with
+    a semi-colon (;) The frequency is an integer measured in Hz 
+    and the duration is measured in 1000th of a quater note
+
+    so:
+    a duration of 1000 is a quaternote
+    a duration of 500 is a 8th note
+    a duration of 250 is a 16th note
+    etc
+
+    Example code:
+
+    

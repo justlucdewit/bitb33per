@@ -1,195 +1,81 @@
-#---------------------------line 1--------------------------------
-#bar 1
-660;500
-660;500
-0;500
-660;500
-0;500
-523;500
-660;1000
-
-#bar 2
-783;1000
-0;1000
-391;1000
-0;1000
-
-#bar 3
-523;1000
-0;500
-392;1000
-0;500
-330;1000
-
-#bar 4
-0;500
-440;1000
-494;1000
-466;500
-440;1000
-
-#bar 5
-392;333
-659;333
-784;333
-880;1000
-698;500
-784;500
-
-#bar 6
-0;500
-659;1000
-523;500
-587;500
-494;1000
-0;500
-
-#bar 3
-523;1000
-0;500
-392;1000
-0;500
-330;1000
+# Welcome to Bitb33per
 
-#bar 4
-0;500
-440;1000
-494;1000
-466;500
-440;1000
+##
 
-#bar 5
-392;333
-659;333
-784;333
-880;1000
-698;500
-784;500
+###### Bitb33per is a 8bit music engine for Windows writen in pure C. It has its own language wich someone can easily write and read custom songs in!
 
-#bar 6
-0;500
-659;1000
-523;500
-587;500
-494;1000
-0;500
+##
 
-#-----------------------------------line 2------------------------
-#bar 7
-0;1000
-784;500
-740;500
-698;500
-587;1000
-659;500
+### How to install Bitb33per
+###### - The first thing that you need to do is, to download the Bitb33per. The only thing you need is the `bitb33p.exe` file found in this repo. Either download the repo as a zip file or Git clone it with the command `git clone https://github.com/justlucdewit/bitb33per` .
 
-#bar 8
-0;500
-415;500
-440;500
-523;500
-0;500
-440;500
-523;500
-587;500
+###### - When you have `bitb33p.exe` downloaded, you have to put the folder containing the executable in your PATH. If u do not know how to do this. please read [this](https://www.itprotoday.com/cloud-computing/how-can-i-add-new-folder-my-system-path) article.
 
-#bar 9
-0;1000
-784;500
-740;500
-698;500
-587;1000
-659;500
+## 
 
-#bar 10
-0;500
-1047;1000
-1047;500
-1047;1000
-0;1000
+### How to use Bitb33per
+###### To run a `.b33p` file (wich contains the song) you need to go to cmd and execute the following command: `bitb33p filename.b33p` where filename is the name of your file.
 
-#bar 11
-0;1000
-784;500
-740;500
-698;500
-587;1000
-659;500
 
-#bar 12
-0;500
-415;500
-440;500
-523;500
-0;500
-440;500
-523;500
-587;500
+##
 
+### Standard songs
+###### Bitb33per comes with a number of standard songs including:
+- mario theme song
 
+##
 
+### How to write your own songs
+###### Bitb33per comes with a number of syntax components:
 
+    Comments
 
+    Comments are texts that are ignored by the interpreter. 
+    They are used by the programmer to identify what part of the
+    code they are looking at, or hinting future programmers what
+    the code means.
 
+    In Bitb33per you define a comment with the character #,
+    everything after that gets turned into a comment and will be
+    ignored.
 
+    Example code:
 
+    #i am a comment
+    #that means that i am ignore
+    #simple :)
 
+#
 
+    Notes
 
+    A note, is a set of frequency and duration, sepperated with
+    a semi-colon (;) The frequency is an integer measured in Hz 
+    and the duration is measured in 1000th of a quater note
 
+    so:
+    A duration of 1000 is a quaternote
+    A duration of 500 is a 8th note
+    A duration of 250 is a 16th note
+    etc...
 
+    Example code:
 
+    #this is a A4 played for 2 beats
+    440;2000
+    
+    #this is a C4 played for 1 beat
+    261;1000
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    #you can also have multiple notes without comments:
+    660;500
+    660;500
+    0;500
+    660;500
+    0;500
+    523;500
+    660;1000
+    783;1000
+    0;1000
+    391;1000
+    0;1000
