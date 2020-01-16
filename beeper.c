@@ -2,7 +2,7 @@
 #include <windows.h>
 
 #define MAXSONGLENGTH 1000000
-#define PLAYSPEED 0.2
+#define PLAYSPEED 0.4
 
 char *trimwhitespace(char *str)
 {
@@ -37,7 +37,7 @@ void readfile(const char* filename){
 	
 	//extract data from the file
 	while (fgets(str , MAXSONGLENGTH, fp) != NULL){
-		if (strcmp(trimwhitespace(str), "") != 0){
+		if (strcmp(trimwhitespace(str), "") != 0 && trimwhitespace(str)[0] != '#'){
 			int frequency;
 			int duration;
 			
