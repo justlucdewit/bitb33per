@@ -61,4 +61,21 @@
 
     Example code:
 
+    #this is a A4 played for 2 beats
+    440;2000
     
+    #this is a C4 played for 1 beat
+    261;1000
+
+    #you can also have multiple notes without comments:
+    660;500
+    660;500
+    0;500
+    660;500
+    0;500
+    523;500
+    660;1000
+    783;1000
+    0;1000
+    391;1000
+    0;1000
