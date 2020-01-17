@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta charset="utf-8">
         <style>
             body{
                 background-color: gray;
@@ -37,7 +38,7 @@
 
     <body>
         <div id = "header">
-            <img id="logo" src="../resources/b33plogo.png"><h1>Bitb33per</h1>
+            <img id="logo" src="resources/b33plogo.png"><h1>Bitb33per</h1>
         </div>
         <div id="wrapper">
             <div id="editor" contentEditable="true">
@@ -47,7 +48,9 @@
             </div>
         </div>
         <button onclick="playSong()">Play</button>
+        <button onclick="stopSong()">Stop</button>
+        <button onclick="getCompressedSong()">Export</button>
     </body>
 
-    <script src="b33p.js"></script>
+    <script src="web/b33p.js"></script>
 </html>
