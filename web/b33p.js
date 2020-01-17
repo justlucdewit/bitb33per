@@ -1,10 +1,18 @@
-// create web audio api context
-var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+const BPM = 120;
+const playspeed = 60/BPM;
+const output = document.getElementById("output");
+const editor = document.getElementById("editor");
+
+let songcount = 0;
+
+function loadfromurl(){
+	editor.innerHTML = atob(findGetParameter("c")).split("\n").join("<br>");
+}
 
 async function playNote(frequency, duration) {
   return new Promise((resolve) => {
-    // create Oscillator node
-    var oscillator = audioCtx.createOscillator();
+    const oscillator = audioCtx.createOscillator();
     oscillator.type = 'square';
     oscillator.frequency.value = frequency;
     oscillator.connect(audioCtx.destination);
@@ -17,25 +25,73 @@ async function playNote(frequency, duration) {
   });
 }
 
-const BPM = 120;
-const playspeed = 60/BPM;
-const output = document.getElementById("output");
-
 async function playSong(){
+	stopSong();
     output.innerHTML = "";
-    const code = document.getElementById("editor").innerText.split("\n");
-    //console.log(code);
+    const code = editor.innerText.split("\n");
+	let songcountbegin = songcount;
     for (const i in code){
+		if (songcount != songcountbegin){
+			break;
+		}
         let line = code[i].trim();
-        if (line[0] != "#" && line[0] != "\n" && line != ""){
-            let freq = parseInt(line.split(";")[0]);
-            let duration = parseInt(line.split(";")[1]);
-            print(`freq = ${freq} dur = ${duration}<br>`);
+
+        if (line[0] == "#" || line[0] == "\n" || line == ""){
+			continue;
+		}else if(line[0] == ">"){
+			line = line.substr(1);
+			print(line+"<br>");
+			continue;
+        }else{
+            const freq = parseInt(line.split(";")[0]);
+            const duration = parseInt(line.split(";")[1]);
+            //print(`freq = ${freq} dur = ${duration}<br>`);
             await playNote(freq, duration*playspeed);
         }
-    }
+	}
+	songcount += 1;
+}
+
+function stopSong(){
+	songcount += 1;
 }
 
 function print(str){
     output.innerHTML += str;
 }
+
+function getCompressedSong(){
+  const rawcode = editor.innerText;
+  let compressed = btoa(rawcode);
+  copyStringToClipboard(compressed);
+  alert("URL has been copied to clipboard");
+}
+
+function copyStringToClipboard (str) {
+	const el = document.createElement('textarea');
+	el.value = str;
+	el.setAttribute('readonly', '');
+	el.style = {position: 'absolute', left: '-9999px'};
+	document.body.appendChild(el);
+	el.select();
+	document.execCommand('copy');
+	document.body.removeChild(el);
+}
+ 
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+		});
+	if (result == null){
+		result = "";
+	}
+    return result;
+}
+
+loadfromurl()
