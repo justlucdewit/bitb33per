@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: gray;
+            }
+            h1{
+                display: inline;
+                vertical-align: center;
+            }
+
+            #header{
+                display: flex;
+                align-items: center;
+            }
+
+            #logo{
+                height: 15vh;
+                margin: 1%;
+            }
+
+            #wrapper{
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            #editor, #output{
+                width: 48%;
+                height: 70vh;
+                border: 1px solid black;
+                overflow-y: scroll;
+                background-color: black;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id = "header">
+            <img id="logo" src="../resources/b33plogo.png"><h1>Bitb33per</h1>
+        </div>
+        <div id="wrapper">
+            <div id="editor" contentEditable="true">
+            </div>
+            <div id="output">
+
+            </div>
+        </div>
+        <button onclick="playSong()">Play</button>
+    </body>
+
+    <script src="b33p.js"></script>
+</html>
