@@ -1,6 +1,6 @@
 const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-const BPM = 120;
-const playspeed = 60/BPM;
+let BPM = 120;
+let playspeed = 60/BPM;
 const output = document.getElementById("output");
 const editor = document.getElementById("editor");
 
@@ -8,6 +8,10 @@ let songcount = 0;
 
 function loadfromurl(){
 	editor.innerHTML = atob(findGetParameter("c")).split("\n").join("<br>");
+	const speed = findGetParameter("s");
+	if (speed != 0){
+		setBPMToValue(parseInt(speed));
+	}
 }
 
 async function playNote(frequency, duration) {
@@ -63,7 +67,7 @@ function print(str){
 function getCompressedSong(){
   const rawcode = editor.innerText;
   let compressed = btoa(rawcode);
-  copyStringToClipboard(compressed);
+  copyStringToClipboard(`https://justlucdewit.github.io/bitb33per?c=${compressed}&s=${BPM}`);
   alert("URL has been copied to clipboard");
 }
 
@@ -92,6 +96,19 @@ function findGetParameter(parameterName) {
 		result = "";
 	}
     return result;
+}
+
+function setBPMToValue(v){
+	document.getElementById("BPMslider").value = v;
+	document.getElementById("bpmlabel").innerText = `${v} BPM`
+	BPM = v;
+	playspeed = 60/BPM;
+}
+
+function setBPM(){
+	document.getElementById("bpmlabel").innerText = `${document.getElementById("BPMslider").value} BPM`;
+	BPM = document.getElementById("BPMslider").value;
+	playspeed = 60/BPM;
 }
 
 loadfromurl()
